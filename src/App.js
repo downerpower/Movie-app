@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import BookList from "./components/BookList";
+import Header from "./components/Header";
+import SearchForm from "./components/SearchForm";
+import FutureReads from "./components/FutureReads";
 
 function App() {
+  const [inputValue, setInputValue] = useState('');
+
+  console.log(inputValue)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <SearchForm setInputValue={setInputValue} inputValue={inputValue}/>
+      <Routes>
+        <Route path='/' element={<BookList inputValue={inputValue}/>}/>
+        <Route path='/futureReads' element={<FutureReads />}/>
+      </Routes>
     </div>
   );
 }
