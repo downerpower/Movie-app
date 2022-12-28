@@ -7,7 +7,7 @@ import Navigation from "./components/Navigation";
 import Watchlist from "./components/Watchlist";
 import ComingSoon from "./components/ComingSoon";
 import { useThemeContext } from "./context/ThemeContext";
-
+import MoviesPagination from "./components/SearchPagination";
 function App() {
   const [query, setQuery] = useState("");
 
@@ -24,7 +24,9 @@ function App() {
 
   const { data, error, loading } = useFetch(`https://api.themoviedb.org/3/search/movie?api_key=46e827d3e6854fcc00976da43dd924c9&language=ru-RU&query=${query}&page=1&include_adult=false`, query)
 
-  const movies = data && data.filter(movie => movie.poster_path && movie.overview && movie.vote_average).map(movie => <MovieCard key={movie.id} movie={movie} />)
+  // const movies = data && data.filter(movie => movie.poster_path && movie.overview && movie.vote_average).map(movie => <MovieCard key={movie.id} movie={movie} />)
+  const movies = data && data.filter(movie => movie.poster_path && movie.overview && movie.vote_average);
+
   return (
     <div className={`body--contaner ${theme}`}>
       <div className="container">
@@ -39,7 +41,13 @@ function App() {
                   query={query}
                   handleInput={handleInput}
                 />
-                {<div className="card-list">{movies}</div>}
+                {/* {<div className="card-list">{movies}</div>} */}
+                {/* {<div className="card-list"> */}
+                {/* {movies} */}
+                {/* {loading && <p>Loading...</p>} */}
+                {movies.length === 0 && <p className={`watch--empty ${theme}`}>No movies found</p>}
+                <MoviesPagination movieData={movies} />
+                {/* </div>} */}
               </>
             }
           />
