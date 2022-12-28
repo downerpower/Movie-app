@@ -1,16 +1,20 @@
+import { useContext } from "react";
+import { useThemeContext } from "../context/ThemeContext";
+
 const SearchForm = ({ handleMovieSearchSubmit, query, handleInput, searchInput }) => {
+   const { theme } = useThemeContext();
+
    return (
       <form className="form" onSubmit={handleMovieSearchSubmit} >
-         {/* <label htmlFor="query" className="label">Movie Name</label> */}
          <input
             type="text"
             name="query"
             placeholder="e.g. Jurassic Park"
-            className="input"
+            className={`input ${theme}`}
             value={query}
             onChange={handleInput}
+            onSubmit={handleMovieSearchSubmit}
          />
-         {/* <button type="submit" className="button">Искать</button> */}
       </form >);
 }
 
