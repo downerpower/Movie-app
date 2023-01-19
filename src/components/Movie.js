@@ -53,11 +53,6 @@ const Movie = ({ movie, isWatchList }) => {
                <p><small>BUDGET: {movie.budget}</small></p>
             </div>}
             <p className={styles.watchDescription}>{movie.overview}</p>
-            {movie.production_companies &&
-               <div className={styles.watchCompanies}>
-                  {movie.production_companies.map((company, i) => <p key={i} className={styles.watchCompany}>{company.name}</p>)}
-               </div>
-            }
          </div>
       </div >
    );

@@ -15,7 +15,7 @@ const ComingSoon = () => {
    return (
       <>
          {loading && <LoopCircleLoading color='#AD241B' />}
-         {!loading && <Pagination movieData={data && data.results} />}
+         {!loading && <Pagination movieData={data && data.results} newMovie={true} />}
       </>
    );
 }

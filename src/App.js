@@ -11,6 +11,7 @@ import Trending from "./components/Trending";
 import MovieDetail from "./components/MovieDetail";
 import MovieCarousel from "./components/MovieCarousel";
 import { LoopCircleLoading } from 'react-loadingg';
+import MovieCard from "./components/MovieCard";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -61,7 +62,15 @@ function App() {
                 {loading && <LoopCircleLoading color='#AD241B' />}
                 {!query && !inputValue && <MovieCarousel movies={data && data.results} />}
                 {query && data && !movies.length && <p className="watch--empty">No movies found</p>}
-                {!loading && query && <Pagination movieData={movies} />}
+                {!loading && query &&
+                  (movies.length > 8 ?
+                    <Pagination movieData={movies} /> :
+                    <div className="card-list">
+                      {movies.map(movie => <MovieCard key={movie.id} movie={movie} newMovie={false} />)}
+                    </div>
+
+                  )
+                }
               </>
             }
           />

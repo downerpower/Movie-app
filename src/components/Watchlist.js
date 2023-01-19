@@ -13,9 +13,12 @@ const Watchlist = () => {
    return (
       <>
          {watchList.length === 0 && <p className={`watch--empty ${theme}`}>Your watchlist is empty.<Link to="/" className="watch--link"> Add something.</Link></p>}
-         {/* {watchList.length > 0 && watchList.map(movie => (<Movie movie={movie} key={movie.id} isWatchList={true} />))} */}
 
-         {watchList.length > 0 && <Pagination movieData={watchList} inWatchlist={true} />}
+         {watchList.length > 0 && (
+            watchList.length > 8 ?
+               <Pagination movieData={watchList} inWatchlist={true} /> :
+               watchList.map(movie => <Movie key={movie.id} movie={movie} isWatchList={true} />)
+         )}
       </>
 
    );

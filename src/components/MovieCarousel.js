@@ -10,10 +10,10 @@ const MovieCarousel = ({ movies }) => {
    return (
       <div className={`carousel--container ${theme}--carousel`}>
          <Carousel
-            // itemsToShow={1}
-            // enableAutoPlay
-            // autoPlaySpeed={3000}
-            // transitionMs={700}
+            itemsToShow={1}
+            enableAutoPlay
+            autoPlaySpeed={3000}
+            transitionMs={700}
          >
             {shuffledMovies && shuffledMovies.map(movie =>
             (<Link to={`/${movie.id}`} key={movie.id}>

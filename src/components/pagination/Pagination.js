@@ -3,14 +3,12 @@ import ReactPaginate from 'react-paginate';
 import MovieCard from "../MovieCard";
 import Movie from '../Movie';
 
-function Pagination({ movieData, inWatchlist }) {
+function Pagination({ movieData, inWatchlist, newMovie }) {
    const [currentMovies, setCurrentMovies] = useState([]);
    const [pageCount, setPageCount] = useState(0);
    const [movieOffSet, setMovieOffSet] = useState(0);
 
    const moviesPerPage = 8;
-
-   const newMovie = true;
 
    useEffect(() => {
       const movieEndOffset = movieOffSet + moviesPerPage;
