@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../MovieCard";
+import Movie from '../Movie';
 
-// Example items, to simulate fetching from another resources.
-
-function ReleasesPagination({ movieData }) {
+function Pagination({ movieData, inWatchlist }) {
    const [currentMovies, setCurrentMovies] = useState([]);
    const [pageCount, setPageCount] = useState(0);
    const [movieOffSet, setMovieOffSet] = useState(0);
@@ -26,9 +25,10 @@ function ReleasesPagination({ movieData }) {
 
    return (
       <>
-         <div className="card-list">
-            {currentMovies.map(movie => < MovieCard key={movie.id} movie={movie} newMovie={newMovie} />)}
-         </div>
+         {inWatchlist && currentMovies.map(movie => <Movie key={movie.id} movie={movie} />)}
+         {!inWatchlist && <div className="card-list">
+            {currentMovies.map(movie => <MovieCard key={movie.id} movie={movie} newMovie={newMovie} />)}
+         </div>}
          <ReactPaginate
             breakLabel="..."
             nextLabel="next >"
@@ -49,4 +49,4 @@ function ReleasesPagination({ movieData }) {
    );
 }
 
-export default ReleasesPagination;
+export default Pagination;

@@ -1,31 +1,45 @@
-import { useState, useContext } from "react";
+import { useState, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 import useFetch from "./hooks/useFetch";
 import SearchForm from "./components/SearchForm";
-import MovieCard from "./components/MovieCard";
 import Navigation from "./components/Navigation";
 import Watchlist from "./components/Watchlist";
 import ComingSoon from "./components/ComingSoon";
 import { useThemeContext } from "./context/ThemeContext";
-import MoviesPagination from "./components/SearchPagination";
+import Pagination from "./components/pagination/Pagination";
+import Trending from "./components/Trending";
+import MovieDetail from "./components/MovieDetail";
+import MovieCarousel from "./components/MovieCarousel";
+import { LoopCircleLoading } from 'react-loadingg';
+
 function App() {
+  const [inputValue, setInputValue] = useState("");
   const [query, setQuery] = useState("");
 
   const { theme } = useThemeContext();
 
+  const inputRef = useRef(null);
+
   const handleInput = (e) => {
-    setQuery(e.target.value);
+    setInputValue(e.target.value)
   }
 
   const handleMovieSearchSubmit = (e) => {
     e.preventDefault();
-    setQuery("");
+    setQuery(inputValue)
   }
 
-  const { data, error, loading } = useFetch(`https://api.themoviedb.org/3/search/movie?api_key=46e827d3e6854fcc00976da43dd924c9&language=ru-RU&query=${query}&page=1&include_adult=false`, query)
+  const handleButtonCloseClick = () => {
+    setInputValue("");
+    setQuery("");
+    inputRef.current.focus();
+  }
 
-  // const movies = data && data.filter(movie => movie.poster_path && movie.overview && movie.vote_average).map(movie => <MovieCard key={movie.id} movie={movie} />)
-  const movies = data && data.filter(movie => movie.poster_path && movie.overview && movie.vote_average);
+  let url = query ? `https://api.themoviedb.org/3/search/movie?api_key=46e827d3e6854fcc00976da43dd924c9&language=en-US&query=${query}&include_adult=false&page=1` : `https://api.themoviedb.org/3/discover/movie?api_key=46e827d3e6854fcc00976da43dd924c9&language=en-US&sort_by=popularity.desc&page=1&include_adult=false`
+
+  const { data, error, loading } = useFetch(url)
+
+  const movies = data && data.results.filter(movie => movie.poster_path && movie.overview && movie.vote_average);
 
   return (
     <div className={`body--contaner ${theme}`}>
@@ -38,26 +52,34 @@ function App() {
               <>
                 <SearchForm
                   handleMovieSearchSubmit={handleMovieSearchSubmit}
+                  inputValue={inputValue}
                   query={query}
                   handleInput={handleInput}
+                  handleButtonCloseClick={handleButtonCloseClick}
+                  inputRef={inputRef}
                 />
-                {/* {<div className="card-list">{movies}</div>} */}
-                {/* {<div className="card-list"> */}
-                {/* {movies} */}
-                {/* {loading && <p>Loading...</p>} */}
-                {movies.length === 0 && <p className={`watch--empty ${theme}`}>No movies found</p>}
-                <MoviesPagination movieData={movies} />
-                {/* </div>} */}
+                {loading && <LoopCircleLoading color='#AD241B' />}
+                {!query && !inputValue && <MovieCarousel movies={data && data.results} />}
+                {query && data && !movies.length && <p className="watch--empty">No movies found</p>}
+                {!loading && query && <Pagination movieData={movies} />}
               </>
             }
           />
           <Route
-            exact path="/watchlist"
+            path="/watchlist"
             element={<Watchlist />}
           />
           <Route
-            exact path="/new"
+            path="/trending"
+            element={<Trending />}
+          />
+          <Route
+            path="/new"
             element={<ComingSoon />}
+          />
+          <Route
+            path="/:movieId"
+            element={<MovieDetail />}
           />
         </Routes>
       </div>

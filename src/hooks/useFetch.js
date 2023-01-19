@@ -6,21 +6,21 @@ const useFetch = (url, query) => {
    const [loading, setLoading] = useState(false)
 
    useEffect(() => {
-      if (query) {
-         try {
-            fetch(url)
-               .then(res => res.json())
-               .then(data => {
-                  console.log(data.results);
-                  setData(data.results);
-               })
-         } catch (err) {
-            setError(err)
-         } finally {
-            setLoading(false)
-         }
+      setLoading(true);
+      try {
+         fetch(url)
+            .then(res => res.json())
+            .then(data => {
+               setData(data);
+               setLoading(false);
+            })
+      } catch (err) {
+         setError(err)
+         setLoading(false)
+      } finally {
+         // setLoading(false)
       }
-   }, [url, query])
+   }, [url,])
 
    return { data, setData, error, loading }
 

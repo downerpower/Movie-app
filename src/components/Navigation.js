@@ -7,6 +7,7 @@ const Navigation = () => {
    const [isActive, setIsActive] = useState({
       home: false,
       watchlist: false,
+      trending: false,
       new: false
    });
 
@@ -20,7 +21,6 @@ const Navigation = () => {
             <li>
                <Link to="/" className={`nav--link ${theme}`} onFocus={() => setIsActive(prevValue => ({ ...prevValue, home: true }))} onBlur={() => setIsActive(prevValue => ({ ...prevValue, home: false }))}>
                   {isActive.home ? <i className="ri-compass-3-fill ri-fw ri-2x" style={{ color: '#AD241B' }}></i> : <i className="ri-compass-3-line ri-fw ri-2x"></i>}
-                  {/* <i className="ri-compass-3-line ri-fw ri-2x"></i> */}
                   <p className="navigation--title">Browse</p>
                </Link>
             </li>
@@ -30,6 +30,15 @@ const Navigation = () => {
                      <i className="ri-heart-fill ri-fw ri-2x" style={{ color: '#AD241B' }}></i> :
                      <i className="ri-heart-line ri-fw ri-2x"></i>}
                   <p className="navigation--title"> Watchlist</p>
+               </Link>
+            </li>
+            <li>
+               <Link to="/trending" className={`nav--link ${theme}`} onFocus={() => setIsActive(prevValue => ({ ...prevValue, trending: true }))} onBlur={() => setIsActive(prevValue => ({ ...prevValue, trending: false }))}>
+                  {isActive.trending ?
+                     <i className="ri-fire-fill ri-fw ri-2x" style={{ color: '#AD241B' }}></i> :
+                     <i className="ri-fire-line ri-fw ri-2x"></i>
+                  }
+                  <p className="navigation--title">Trending</p>
                </Link>
             </li>
             <li>

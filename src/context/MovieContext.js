@@ -22,7 +22,6 @@ const MovieContextProvider = ({ children }) => {
    const removeFromWatchlist = (id) => {
       const oldWatchlist = [...watchList];
       const newWatchlist = oldWatchlist.filter(movie => movie.id !== id);
-
       setWatchList(newWatchlist)
    }
 
