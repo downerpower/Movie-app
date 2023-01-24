@@ -94,7 +94,7 @@
    }
 
    .cardTitle {
-      margin-bottom: 0;
+      margin-bottom: 0.2rem;
    }
 
    .small {
@@ -122,7 +122,7 @@
    }
 
    .small {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
    }
 
    .cardNew {
@@ -133,6 +133,10 @@
 
 
 @media screen and (max-width: 681px) {
+   .card {
+      padding: 0.7rem;
+   }
+
    .cardNew {
       width: 5rem;
    }
@@ -147,7 +151,7 @@
    }
 
    .small {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
    }
 
    .iconHeart {
@@ -156,7 +160,7 @@
 }
 
 
-@media screen and (max-width: 577px) {
+@media screen and (max-width: 595px) {
    .cardNew {
       width: 4rem;
       bottom: 83%;
@@ -176,15 +180,17 @@
    }
 
    .small {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
+      font-weight: 600;
    }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 511px) {
    .cardNew {
       width: 3rem;
       bottom: 85%;
    }
+
    .card {
       padding: 0.5rem 0.2rem;
       border-radius: 7px;
@@ -196,11 +202,7 @@
    }
 
    .cardTitle {
-      font-size: 0.8rem;
-   }
-
-   .small {
-      font-size: 0.4rem;
+      font-size: 0.9rem;
    }
 
    .small {

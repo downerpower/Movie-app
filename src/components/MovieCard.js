@@ -20,6 +20,7 @@ const MovieCard = ({ movie, newMovie }) => {
    }, []);
 
    const isDesktop = width >= 1280;
+   const isMobile = width <= 468;
 
    const { watchList, addToWatchList, removeFromWatchlist, } = useAppContext();
 
@@ -46,12 +47,12 @@ const MovieCard = ({ movie, newMovie }) => {
             <h3 className={`${styles.cardTitle} ${theme}--card`}>{movie.title}</h3>
             {newMovie && (<div className={styles.cardInfo}>
                <i className="ri-movie-2-line ri-fw" style={{ color: '#FDCF00' }}></i>
-               <p className={styles.cardRelease}><small className={styles.small}>RELEASE DATE: {movie.release_date}</small></p>
+               <p className={styles.cardRelease}><small className={styles.small}>{!isMobile && 'RELEASE DATE:'} {movie.release_date}</small></p>
             </div>)}
             <div className={styles.cardBottom}>
                <div className={styles.cardInfo}>
                   <i className="ri-star-fill ri-fw" style={{ color: '#FDCF00' }}></i>
-                  <p><small className={styles.small}>RATING: {movie.vote_average}</small></p>
+                  <p><small className={styles.small}>{!isMobile && 'RATING:'} {movie.vote_average}</small></p>
                </div>
                <div className={isDesktop ? classes : undefined}>
                   <div className={styles.iconHeart}>

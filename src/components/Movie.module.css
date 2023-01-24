@@ -118,6 +118,10 @@ small {
    .iconBig {
       width: 26px;
    }
+
+   small {
+      font-size: 0.9rem;
+   } 
 }
 
 @media screen and (max-width: 548px) {
@@ -137,6 +141,10 @@ small {
    .iconBig {
       width: 22px;
    }
+
+   small {
+      font-size: 0.8rem;
+   } 
 }
 
 @media screen and (max-width: 470px) {
@@ -153,6 +161,10 @@ small {
    .watchImage {
       max-height: 13rem;
    }
+
+   small {
+      font-size: 0.7rem;
+   } 
 }
 
 @media screen and (max-width: 380px) {
