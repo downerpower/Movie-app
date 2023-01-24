@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
+import { useState } from "react";
 import Pagination from "./pagination/Pagination";
 import { LoopCircleLoading } from 'react-loadingg';
 
@@ -7,7 +6,6 @@ import useFetch from "../hooks/useFetch";
 import Genres from "./Genres";
 
 const Trending = () => {
-   // const [genres, setGenres] = useState([]);
    const [currentGenre, setCurrentGenre] = useState('');
 
    const handleGenreClick = (e) => {

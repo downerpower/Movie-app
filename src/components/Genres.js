@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import { useThemeContext } from "../context/ThemeContext";
 import useFetch from "../hooks/useFetch";
 
 const Genres = ({ currentGenre, handleGenreClick }) => {
-   
+
    const { theme } = useThemeContext();
 
    const { data, error, loading } = useFetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=46e827d3e6854fcc00976da43dd924c9&language=en-US`)

@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 
 const SimilarMovies = ({ movieId }) => {
 
-   const { data, error, loading } = useFetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=46e827d3e6854fcc00976da43dd924c9&language=en-US&page=1`)
+   const { data, loading } = useFetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=46e827d3e6854fcc00976da43dd924c9&language=en-US&page=1`)
 
    return (
       <>

@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom"
 import useFetch from "../hooks/useFetch";
-import { LoopCircleLoading } from 'react-loadingg';
 
 import SimilarMovies from "./SimilarMovies";
 import Movie from "./Movie";
