@@ -13,6 +13,7 @@ A project where the user can search for movies and their descriptions, filter th
 
 ## Features
 - Getting data from The Movie Database API using Fetch API;
-- Responsive Carousel (react-responsive-carousel library)
+- Dark and light theme;
+- Responsive Carousel (react-responsive-carousel library);
 - Pagination (react-paginate liblirary);
 - Responsive design;
