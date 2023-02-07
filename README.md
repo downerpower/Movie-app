@@ -12,7 +12,7 @@ https://downerpower-movies.netlify.app/
 A project where the user can search for movies and their descriptions, filter them by genre and add them to favorites, as well as get recommendations based on their preferences.
 
 ## Features
-- Getting data from The Movie Database API using Fetch API;
+- Getting data from The Movie Database API (https://www.themoviedb.org/documentation/api) using Fetch API;
 - Dark and light theme;
 - Responsive Carousel (react-responsive-carousel library);
 - Pagination (react-paginate liblirary);
